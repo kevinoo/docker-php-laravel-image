@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+source ./.env
+
+./_deploy.sh php81
+./_deploy.sh php81-locales
+./_deploy.sh php82
+./_deploy.sh php82-locales
