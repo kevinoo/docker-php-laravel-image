@@ -28,6 +28,12 @@ fi
 if [ "$1" == 'php82-locales' ]; then
   TAG="php8.2-apache-locales"
 fi
+if [ "$1" == 'php83' ]; then
+  TAG="php8.3-apache"
+fi
+if [ "$1" == 'php83-locales' ]; then
+  TAG="php8.3-apache-locales"
+fi
 
 if [ "$TAG" == '' ]; then
   echo " "
