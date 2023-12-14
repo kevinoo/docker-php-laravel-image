@@ -15,7 +15,7 @@
 - Kevin Lucich (info@lucichkevin.it)
 
 ### Build and push a docker's image 
-> ./_deploy.sh [php81|php82]
+> ./_deploy.sh [php81|php82|php83]
 
 ### Build and push all dockers' images 
 > ./_deploy_all.sh
