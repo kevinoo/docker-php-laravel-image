@@ -1,0 +1,27 @@
+FROM kevinoo/php-laravel-basic-image:php8.2-fpm-alpine
+
+RUN apt update && apt install -y locales groff
+
+# Locales
+RUN dpkg-reconfigure locales \
+	&& locale-gen C.UTF-8 \
+	&& /usr/sbin/update-locale LANG=C.UTF-8 \
+	&& echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen \
+	&& echo 'it_IT.UTF-8 UTF-8' >> /etc/locale.gen \
+	&& echo 'fr_FR.UTF-8 UTF-8' >> /etc/locale.gen \
+	&& echo 'es_ES.UTF-8 UTF-8' >> /etc/locale.gen \
+	&& echo 'de_DE.UTF-8 UTF-8' >> /etc/locale.gen \
+	&& locale-gen
+
+ENV LC_ALL C.UTF-8
+ENV LANG it_IT.UTF-8
+ENV LANGUAGE it_IT.UTF-8
+
+# Enable php extensions
+RUN docker-php-ext-configure intl \
+    && docker-php-ext-install -j$(nproc) intl
+
+WORKDIR /var/www/html/
+
+EXPOSE 80
+CMD ["apache2-foreground"]

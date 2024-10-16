@@ -5,41 +5,16 @@ _echo_script_usage(){
 	echo " "
   echo "Deploy script usage: "
   echo " "
-  echo "./_deploy.sh [php81|php82]"
+  echo "./_deploy.sh [php7.2-apache|php8.1-apache|php8.2-apache]"
   echo " "
 }
-
 
 if [ -z "$1" ] || [ "$1" == '--help' ] || [ "$1" == '-h' ]; then
   _echo_script_usage ""
 	exit
 fi
 
-TAG=""
-if [ "$1" == 'php72' ]; then
-  TAG="php7.2-apache"
-fi
-if [ "$1" == 'php72-locales' ]; then
-  TAG="php7.2-apache-locales"
-fi
-if [ "$1" == 'php81' ]; then
-  TAG="php8.1-apache"
-fi
-if [ "$1" == 'php81-locales' ]; then
-  TAG="php8.1-apache-locales"
-fi
-if [ "$1" == 'php82' ]; then
-  TAG="php8.2-apache"
-fi
-if [ "$1" == 'php82-locales' ]; then
-  TAG="php8.2-apache-locales"
-fi
-if [ "$1" == 'php83' ]; then
-  TAG="php8.3-apache"
-fi
-if [ "$1" == 'php83-locales' ]; then
-  TAG="php8.3-apache-locales"
-fi
+TAG="$1"
 
 if [ "$TAG" == '' ]; then
   echo " "
@@ -48,6 +23,9 @@ if [ "$TAG" == '' ]; then
 	exit
 fi
 
+
+DOCKER_FILE="Dockerfile-"${TAG//\./}
+
 echo "$WEB_SERVER_IMAGE:$TAG"
-docker build -t "$WEB_SERVER_IMAGE":"$TAG" --file "Dockerfile-$1-apache" .
+docker build -t "$WEB_SERVER_IMAGE":"$TAG" --file "$DOCKER_FILE" .
 docker push "$WEB_SERVER_IMAGE":"$TAG"
