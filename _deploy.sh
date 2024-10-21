@@ -5,7 +5,7 @@ _echo_script_usage(){
 	echo " "
   echo "Deploy script usage: "
   echo " "
-  echo "./_deploy.sh [php7.2-apache|php8.1-apache|php8.2-apache]"
+  echo "./_deploy.sh [php7.2-apache|php8.1-apache|php8.2-apache|php8.3-apache]"
   echo " "
 }
 
