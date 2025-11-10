@@ -1,4 +1,4 @@
-# Docker Image for Laravel 10.x with Composer and PHP extensions
+# Docker Image for Laravel 10.x/11.x/12.x with Composer and PHP extensions
 
 ## Docker Hub URL
 [![Docker Hub URL](https://img.shields.io/badge/kevinoo%2Fphp--laravel--basic--image-blue?style=for-the-badge&logo=docker&label=Docker%20Hub&link=https%3A%2F%2Fhub.docker.com%2Fr%2Fkevinoo%2Fphp-laravel-basic-image)](https://hub.docker.com/r/kevinoo/php-laravel-basic-image)
@@ -8,7 +8,7 @@
 docker run -d -p 80:80 --name my-apache-php-app -v "$PWD":/var/www/html kevinoo/php-laravel-basic-image:[TAG]
 
 ## How to install
-- Run the image and follow the [Laravel Documentation](https://laravel.com/docs/10.x/installation#creating-a-laravel-project)
+- Run the image and follow the [Laravel Documentation](https://laravel.com/docs/12.x/installation#creating-a-laravel-project)
 
 ## PHP extensions enabled
 - pdo (pgsql, mysqli)
@@ -23,7 +23,7 @@ docker run -d -p 80:80 --name my-apache-php-app -v "$PWD":/var/www/html kevinoo/
 ## Builds project
 
 ### Build and push a docker's image 
-> ./_deploy.sh [php81|php82|php83]
+> ./_deploy.sh [php84|php85]
 > 
 ### Build and push all dockers' images 
 > ./_deploy_all.sh
