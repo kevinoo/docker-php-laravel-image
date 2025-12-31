@@ -1,4 +1,4 @@
-FROM php:8.4-fpm-alpine AS build
+FROM php:8.5-fpm-alpine AS build
 
 RUN apk add --no-cache \
     bash wget libstdc++ msmtp perl procps shadow vim supervisor ${PHPIZE_DEPS} \
@@ -10,7 +10,7 @@ RUN apk add --no-cache \
         gd pdo_pgsql intl exif zip xml bcmath soap && \
  	docker-php-ext-enable redis
 
-FROM php:8.4-fpm-alpine
+FROM php:8.5-fpm-alpine
 
 RUN apk add --no-cache \
     bash wget libstdc++ msmtp perl procps shadow vim supervisor \
