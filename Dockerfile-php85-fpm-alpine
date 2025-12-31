@@ -6,8 +6,7 @@ RUN apk add --no-cache \
     icu-dev libxml2-dev zlib-dev pcre-dev && \
  	pecl install redis && \
  	docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp && \
- 	docker-php-ext-install \
-        gd pdo_pgsql intl exif zip xml bcmath soap && \
+ 	docker-php-ext-install gd pdo_pgsql intl exif zip xml bcmath soap && \
  	docker-php-ext-enable redis
 
 FROM php:8.5-fpm-alpine
