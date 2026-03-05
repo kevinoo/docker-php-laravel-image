@@ -3,7 +3,7 @@ FROM php:8.5-fpm-alpine AS build
 RUN apk add --no-cache \
     bash wget libstdc++ msmtp perl procps shadow vim supervisor ${PHPIZE_DEPS} \
     libzip-dev libpq-dev libpng-dev libjpeg-turbo-dev libwebp-dev freetype-dev \
-    icu-dev libxml2-dev zlib-dev pcre-dev && \
+    icu-dev libxml2-dev zlib-dev pcre-dev gettext gettext-dev && \
  	pecl install redis && \
  	docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp && \
  	docker-php-ext-configure pcntl --enable-pcntl && \
@@ -15,7 +15,7 @@ FROM php:8.5-fpm-alpine
 RUN apk add --no-cache \
     bash wget libstdc++ msmtp perl procps shadow vim supervisor \
     libzip libpq libpng libjpeg-turbo libwebp freetype \
-    icu-libs zlib
+    icu-libs zlib postgresql-client
 
 RUN rm -rf /usr/local/lib/php/extensions/* && \
     rm -rf /usr/local/etc/php/conf.d/*
